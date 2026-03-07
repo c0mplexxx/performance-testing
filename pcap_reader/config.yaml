@@ -1,0 +1,29 @@
+# === PCAP Generator Configuration ===
+# Configuration for pcap_generator.py
+
+# TRex Connection
+trex_server: "127.0.0.1"
+trex_port_tx: 0
+trex_port_rx: 1
+
+# Traffic Settings
+duration_seconds: 15
+rate_pps: 1000
+
+# PCAP Files (required) - list of pcap/pcapng files to replay
+pcap_files:
+  - "/path/to/capture1.pcap"
+  - "/path/to/capture2.pcapng"
+
+# IP Header Options
+ignore_ipv4_header: false  # false = use src_ip/dst_ip from config below; true = copy IP from pcap as-is
+src_ip: "172.16.0.0/16"   # Source IP prefix/range (CIDR notation)
+dst_ip: "10.22.0.1/32"    # Destination IP prefix/range (CIDR notation)
+                           # Examples:
+                           #   "192.168.0.0/24" - range 192.168.0.0 - 192.168.0.255
+                           #   "10.0.0.1/32"    - single IP address 10.0.0.1
+
+# Layer 2 Settings (optional)
+vlan_id: null             # VLAN tag (null or omit = no VLAN, e.g. vlan_id: 110)
+src_mac: "b8:3f:d2:9f:09:d2"  # Source MAC address
+dst_mac: "a0:88:c2:30:93:08"  # Destination MAC address
